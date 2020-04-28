@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE suite SYSTEM 'http://testng.org/testng-1.0.dtd'>
+<suite name='Clarion Automation Test Suite' verbose="1"
+	configfailurepolicy="continue">
+
+		
+	<!--  <test name="Android" preserve-order='true'> -->
+     <test name="LaunchQRGGuide" preserve-order='true'>
+	<!-- 	<parameter name="automationName" value=""></parameter>
+		<parameter name="applicationType" value="mobileapp"></parameter>
+		<parameter name="browser" value=""></parameter>
+		<parameter name="platformName" value="android"></parameter>
+		<parameter name="version" value="7.0"></parameter>
+		<parameter name="deviceName" value="SV.SB.17"></parameter>
+		<parameter name="executeon" value="grid"></parameter>
+		<parameter name="remoteurl" value="http://0.0.0.0:4723/wd/hub"></parameter>
+		<parameter name="android_appPackage" value="com.subaru.global.infotainment.gen2"></parameter>
+		<parameter name="android_appActivity"
+			value="com.subaru.global.infotainment.gen2.Main.Activity"></parameter>
+		<parameter name="android_appActivity"
+			value="com.subaru.global.infotainment.gen2.MainActivity"></parameter>
+		<parameter name="mobile_app_type" value="native"></parameter> -->
+		<classes>
+		  <class name="mobileauto.BaseTest"/>
+		</classes>
+	</test>  
+	
+	   
+</suite>
