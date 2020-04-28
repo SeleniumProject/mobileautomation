@@ -1,0 +1,141 @@
+Appium Configuration in Windows and Mac
+Configuration of Appium for Android in Windows PC
+Step 1: Install latest version of JDK (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+Step 2: Set JAVA_HOME
+
+Right-click the My Computer icon on your desktop and select Properties.
+Click Advanced system settings
+Click the Environment Variables
+Under User Variables, click New.
+Enter the variable name as JAVA_HOME
+Enter the variable value as the installation path for the Java Development Kit as something like “C:\Program Files\Java\jdk1.6.0”
+Click OK in ‘New User Variable’ dialog box.
+Under User Variables, select Path in system variable.
+Click Edit.
+Scroll to the beginning of the Variable value and insert %JAVA_HOME%\bin;
+Click OK in ‘Edit User Variable’ dialog box.
+Click OK in ‘Environment Variables’ dialog box.
+Click Apply and OKin ‘System Properties’ Windows.
+If the changes do not take effect restart Windows.
+Step 3: Install latest version of eclipse IDE (https://eclipse.org/downloads/)
+
+Step 4: Install TestNG plugin (http://beust.com/eclipse-old/eclipse-6.8.6.20130517_2218/)
+
+Step 5: Install Android SDK(http://developer.android.com/sdk/index.html).
+
+Open Eclipse.
+Select Windows
+Select
+Select Android and set the Android SDK
+Click on Apply and later tap on
+
+REPORT THIS AD
+
+Step 6: Set ANDROID_HOME and add tools and platform-tools folders to Path Settings
+
+Right-click the My Computer icon on your desktop and select Properties.
+Click Advanced system settings
+Click the Environment Variables
+Under User Variables, click New.
+Enter the variable name as ANDROID_HOME
+Enter the variable value as the installation path for the Java Development Kit as something like ” E:\AndroidDev\android-sdk”
+Click OK in ‘New User Variable’ dialog box.
+Under User Variables, select Pathsystem variable.
+Click Edit.
+Scroll to the beginning of the Variable value and insert E:\AndroidDev\android-sdk\platform-tools; E:\AndroidDev\android-sdk\tools
+Click OK in ‘Edit User Variable’ dialog box.
+Click OK in ‘Environment Variables’ dialog box.
+Click Apply and OK in ‘System Properties’ Windows.
+If the changes do not take effect restart Windows.
+Step 7: Install Appiumfor Windows (use appium-desktop-setup-<latest version>.exe) (https://github.com/appium/appium-desktop/releases).
+
+Configuration of Appium for Android in Mac OS
+Step 1: Install latest version of JDK (http://www.oracle.com/technetwork/java/javase/downloads/index.html) – download the JDK that specific to Mac OS
+
+Step 2: Set JAVA_HOME
+
+Startup Terminal in Mac and enter following commands
+Type “touch ~/.bash_profile” to create your new file
+Type “open ~/.bash_profile” to open it in TextEdit
+Enter “export JAVA_HOME=/<jdk_path>”
+Type “source ~/.bash_profile” to reload the bash profile to user.
+Type “echo $JAVA_HOME” to check the path of JDK is set or not.
+Step 3: Install latest version of eclipse IDE (https://www.eclipse.org/downloads/?osType=macosx) – download the eclipse that specific to Mac OS
+
+Step 4: Install TestNG plugin (http://beust.com/eclipse-old/eclipse-6.8.6.20130517_2218/)
+
+Step 5: Install Android SDK (http://developer.android.com/sdk/index.html) in Mac specific SDK.
+
+Step 6: Set ANDROID_HOME
+
+Startup Terminal in Mac and enter following commands
+Type “touch ~/.bash_profile” to create your new file
+Type “open ~/.bash_profile ” to open it in TextEdit
+Enter “export ANDROID_HOME=/<android sdk_path>”
+Type “source ~/.bash_profile” to reload the bash profile to user.
+Type “echo $ANDROID_HOME” to check the path of SDK is set or not.
+Step 7: Set tools and platform-tools folders to Path Settings
+
+Startup Terminal in Mac and enter following commands
+Type “touch ~/.bash_profile” to create your new file
+Type “open ~/.bash_profile ” to open it in TextEdit
+Type “PATH=<path of platform-tools>: $PATH”
+Type “PATH=<path of tools>: $PATH”
+Step 8: Install Appiumfor Mac. We can install Appium two ways in Mac OS:
+
+By using dmg file (direct download the executable .dmg file and install) (https://github.com/appium/appium-desktop/releases)
+Command-line installation method. Open terminal and enter following commands:
+brew install node //get node.js
+npm install -g appium@<your desired appium version> //get appium
+appium //start appium
+
+REPORT THIS AD
+
+NOTE: If brew missing in OS X then open http://brew.sh/ and run the following command in terminal:
+
+ruby -e “$(curl –fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”
+
+Step 9: Additional tools set up: Genymotion
+
+Install Virtualbox in Mac.
+Install Genymotion in Mac.
+Open Virtual Device > File menu > Export Appliances > Add virtual emulators by browse (need to download the emulator say Samsung S3 or Samsung S4).
+Open Genymotion application
+Add virtual devices/emulators to Genymotion.
+Run any emulator.
+Run “adb devices” in terminal to check the list of devices active currently.
+Open Genymotion and go to Settings> ADB> Set Android SDK path> tap on OK.
+Configuration of Appium for iOS in Mac OS
+Step 1: Install latest version of JDK (http://www.oracle.com/technetwork/java/javase/downloads/index.html) – download the JDK that specific to Mac OS
+
+Step 2: Set JAVA_HOME
+
+Startup Terminal in Mac and enter following commands
+Type “touch ~/.bash_profile” to create your new file
+Type “open ~/.bash_profile” to open it in TextEdit
+Enter “export JAVA_HOME=/<jdk_path>”
+Type “source ~/.bash_profile” to reload the bash profile to user.
+Type “echo $JAVA_HOME” to check the path of JDK is set or not.
+
+REPORT THIS AD
+
+Step 3:Install latest version of eclipse IDE (https://www.eclipse.org/downloads/?osType=macosx) – download the eclipse that specific to Mac OS
+
+Step 4: Install TestNG plugin (http://beust.com/eclipse-old/eclipse-6.8.6.20130517_2218/)
+
+Step 5: Install Xcodelatest version (6.4 or 7.0 and above) (https://developer.apple.com/xcode/download/)
+
+Mainly for instruments to start the capturing the screens.
+Open Xcode: Tap on Xcode menu > Open Developer Tool> Instruments> Start capturing the screen objects.
+Automation tool in Xcode IDE>UIAutomation using the JavaScript (optional).
+Step 6: Install Appiumfor Mac. We can install Appium two ways in Mac OS:
+
+By using dmg file (direct download the executable .dmg file and install) (https://github.com/appium/appium-desktop/releases)
+Command-line installation method. Open terminal and enter following commands:
+brew install node //get node.js
+npm install -g appium@<your desired appium version>  //get appium
+appium //start appium
+NOTE: If brew missing in OS X then open http://brew.sh/ and run the following command in terminal:
+
+ruby -e “$(curl –fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)”

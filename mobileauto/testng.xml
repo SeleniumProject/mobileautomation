@@ -21,7 +21,7 @@
 			value="com.subaru.global.infotainment.gen2.MainActivity"></parameter>
 		<parameter name="mobile_app_type" value="native"></parameter> -->
 		<classes>
-		  <class name="mobileauto.BaseTest"/>
+		  <class name="com.mobile.baseTest.BaseTest"/>
 		</classes>
 	</test>  
 	

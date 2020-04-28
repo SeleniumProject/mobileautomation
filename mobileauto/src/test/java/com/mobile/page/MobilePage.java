@@ -10,18 +10,28 @@ import net.thucydides.core.webdriver.ThucydidesWebDriverSupport;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 import java.time.Duration;
 import java.time.temporal.TemporalUnit;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 //@Log
 public class MobilePage extends PageObject {
-
+	  public static final int SMALL_WAIT = 5;
+	    public static final int MED_WAIT = 15;
+	    public static final int LONG_WAIT = 30;
+	    public static final int MAX_WAIT = 60;
+	    public static final int MAX_SCROLL = 100;
     public MobilePage(WebDriver driver) {
         super(driver, page -> {
             PageFactory.initElements(new AppiumFieldDecorator(driver), page);
@@ -86,7 +96,14 @@ public class MobilePage extends PageObject {
     protected void switchToNativeViewAndroid() {
         getMobileDriver().context("NATIVE_APP");
     }
-
+    protected void waitInSeconds(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            //log.error("Interrupted!", e);
+            Thread.currentThread().interrupt();
+        }
+    }
 
     /**
      * performs tap action on the element
@@ -145,9 +162,26 @@ public class MobilePage extends PageObject {
     }
 
    
-
+   
     public boolean isAndroidPlatform() {
         return propertiesManager.getProperty("appium.platformName").equalsIgnoreCase("android");
+    }
+    
+    protected void click(MobileElement element) {
+        ((RemoteWebElement) elementToBeClickable(element)).click();
+    }
+
+    /**
+     * Gets the waitOn instance.
+     *
+     * @return A FluentWait instance.
+     */
+   
+    
+    public void type(MobileElement element, String text) {
+       elementToBeClickable(element);
+        element.clear();
+        element.sendKeys(text);
     }
 
 }
