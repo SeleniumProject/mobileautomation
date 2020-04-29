@@ -8,8 +8,6 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
-import io.appium.java_client.service.local.flags.GeneralServerFlag;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -32,16 +30,16 @@ public class BaseTest {
     public void setup() {
     	cap = new DesiredCapabilities();
     	cap.setCapability("noReset", "false");
-    	builder = new AppiumServiceBuilder();
-		builder.withIPAddress("127.0.0.1");
-		builder.usingPort(4723);
-		builder.withCapabilities(cap);
-		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
-		
-		//Start the server with the builder
-		service = AppiumDriverLocalService.buildService(builder);
-		service.start();
+//    	builder = new AppiumServiceBuilder();
+//		builder.withIPAddress("127.0.0.1");
+//		builder.usingPort(4723);
+//		builder.withCapabilities(cap);
+//		builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+//		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
+//		
+//		//Start the server with the builder
+//		service = AppiumDriverLocalService.buildService(builder);
+//		service.start();
     }
         
     @Test
@@ -50,7 +48,7 @@ public class BaseTest {
 			
 		
     	
-    	String properties = "android";
+    	String properties = "ios";
     	
     	if (properties.equalsIgnoreCase("android")) {
 			
@@ -81,18 +79,28 @@ public class BaseTest {
     		File appDir = new File("resources");
     		File app = new File(appDir, "Bite2.iOS (1).ipa");
     		
-    		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
-    		cap.setCapability(MobileCapabilityType.UDID, "e51e3b723010554f54498b0655e28f014f76bbd1");
-            cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "200");
-            cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-            cap.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.sodexo.noram.stage.com");
-            Driver.iOSInstance = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
-            Driver.iOSInstance.setLogLevel(Level.INFO);
+    	      
+    	       cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.4.1");
+    	        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
+    	        
+    	        cap.setCapability(MobileCapabilityType.DEVICE_NAME,"iPhone 8 Plus (13.4.1)");
+    	        cap.setCapability("udid","D879FEA5-A766-4188-8EF5-85389A54D074");
+    	        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
+    	       // cap.setCapability("appium-version", "1.7.2");
+    	        cap.setCapability("autoAcceptAlerts",false);
+    	        cap.setCapability("noReset","true");
+    	        cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+    	        cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 30000);
+    	        cap.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.sodexo.noram.stage.com");
+                Driver.iOSInstance = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                Driver.iOSInstance.setLogLevel(Level.INFO);
+    	        
+    		
 		}
     	} catch (Exception e) {
-    		service.stop();
+    		
 		} finally {
-			service.stop();
+			
 		}
  
 

@@ -7,7 +7,7 @@ import io.appium.java_client.ios.IOSElement;
 
 
 	public class Driver {
-		public static AndroidDriver<MobileElement> Instance;
+		public static  AndroidDriver<MobileElement> Instance;
 		public static AppiumDriver<IOSElement> iOSInstance;
 
 	
