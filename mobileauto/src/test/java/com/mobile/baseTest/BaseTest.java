@@ -8,7 +8,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import java.net.URL;
@@ -93,9 +97,13 @@ public class BaseTest {
     	        cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 30000);
     	        cap.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.sodexo.noram.stage.com");
                 Driver.iOSInstance = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+                Thread.sleep(5000);
                 Driver.iOSInstance.setLogLevel(Level.INFO);
-    	        
-    		
+                Driver.iOSInstance.context("NATIVE_APP");
+                Driver.iOSInstance.findElement(By.xpath("//*[@text=concat('LET', \"'\", 'S START')]")).click();
+                new WebDriverWait(Driver.iOSInstance, 30).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@contentDescription='UITestLocationsList']")));
+                Driver.iOSInstance.findElement(By.xpath("//*[@contentDescription='UITestLocationsList']")).click();
+                
 		}
     	} catch (Exception e) {
     		
