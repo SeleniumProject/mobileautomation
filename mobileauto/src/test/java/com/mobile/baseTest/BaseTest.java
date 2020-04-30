@@ -80,26 +80,27 @@ public class BaseTest {
 			
 	
     	} else {
-    		File appDir = new File("resources");
-    		File app = new File(appDir, "Bite2.iOS (1).ipa");
+    		//File appDir = new File("resources");
+    		//File app = new File(appDir, "Bite2.iOS.ipa");
     		
     	      
-    	       cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13.4.1");
+    	       cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12.4.6");
     	        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
     	        
-    	        cap.setCapability(MobileCapabilityType.DEVICE_NAME,"iPhone 8 Plus (13.4.1)");
-    	        cap.setCapability("udid","D879FEA5-A766-4188-8EF5-85389A54D074");
+    	        cap.setCapability(MobileCapabilityType.DEVICE_NAME,"MyIPhone6 (12.4.6)");
+    	        cap.setCapability("udid","e51e3b723010554f54498b0655e28f014f76bbd1");
     	        cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
     	       // cap.setCapability("appium-version", "1.7.2");
     	        cap.setCapability("autoAcceptAlerts",false);
-    	        cap.setCapability("noReset","true");
-    	        cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+    	        cap.setCapability("noReset","false");
+    	       //cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
     	        cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 30000);
     	        cap.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.sodexo.noram.stage.com");
                 Driver.iOSInstance = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
-                Thread.sleep(5000);
+                Thread.sleep(8000);
                 Driver.iOSInstance.setLogLevel(Level.INFO);
                 Driver.iOSInstance.context("NATIVE_APP");
+                Thread.sleep(3000);
                 Driver.iOSInstance.findElement(By.xpath("//*[@text=concat('LET', \"'\", 'S START')]")).click();
                 new WebDriverWait(Driver.iOSInstance, 30).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@contentDescription='UITestLocationsList']")));
                 Driver.iOSInstance.findElement(By.xpath("//*[@contentDescription='UITestLocationsList']")).click();
